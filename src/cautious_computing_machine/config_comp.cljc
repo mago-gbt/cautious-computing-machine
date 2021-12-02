@@ -17,7 +17,12 @@
     :comp comp})
   ([comp nattrs]
    (let [n-comp (fn [& {:keys [f args attrs] :as cargs}]
-                  (apply comp (update cargs :attrs merge nattrs)))]
+                  (apply comp
+                         (mapcat concat
+                                 (update cargs
+                                         :attrs
+                                         merge
+                                         nattrs))))]
      {:config (fn [nnattrs]
                 (make-config n-comp nnattrs))
       :comp n-comp})))
