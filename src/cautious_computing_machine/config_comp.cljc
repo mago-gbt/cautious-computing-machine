@@ -2,8 +2,8 @@
 
 (defn comp-from-tag
   [tag]
-  (fn [& {:keys [f args attrs content]}]
-    (f args (into [tag attrs content]))))
+  (fn [& {:keys [f args attrs]}]
+    (f args (into [tag attrs]))))
 
 (defn comp-identity
   [_ disp]
@@ -15,7 +15,7 @@
               (make-config nattrs))
     :comp comp})
   ([comp nattrs]
-   (let [n-comp (fn [& {:keys [f args attrs content] :as cargs}]
+   (let [n-comp (fn [& {:keys [f args attrs] :as cargs}]
                   (apply comp (update cargs :attrs merge nattrs)))]
      {:config (fn [nnattrs]
                 (make-config n-comp nnattrs))
