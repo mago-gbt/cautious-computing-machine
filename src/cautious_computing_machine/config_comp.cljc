@@ -3,7 +3,7 @@
 (defn comp-from-tag
   [tag]
   (fn [& {:keys [f args attrs content]}]
-    (f args (into [tag attrs content] children))))
+    (f args (into [tag attrs content]))))
 
 (defn make-config
   ([comp]
