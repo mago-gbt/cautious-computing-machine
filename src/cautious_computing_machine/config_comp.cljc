@@ -5,6 +5,10 @@
   (fn [& {:keys [f args attrs content]}]
     (f args (into [tag attrs content]))))
 
+(defn comp-identity
+  [_ disp]
+  disp)
+
 (defn make-config
   ([comp]
    {:config (fn [nattrs]
