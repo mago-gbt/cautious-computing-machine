@@ -21,8 +21,8 @@
                          (mapcat concat
                                  (update cargs
                                          :attrs
-                                         merge-with
-                                         merge
+                                         (partial merge-with
+                                                  merge)
                                          nattrs))))]
      {:config (fn [nnattrs]
                 (make-config n-comp nnattrs))
