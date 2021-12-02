@@ -7,7 +7,8 @@
 
 (defn comp-identity
   [_ disp]
-  disp)
+  (fn [& children]
+    (into disp children)))
 
 (defn make-config
   ([comp]
