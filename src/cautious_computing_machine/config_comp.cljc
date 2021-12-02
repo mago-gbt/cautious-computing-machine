@@ -21,6 +21,7 @@
                          (mapcat concat
                                  (update cargs
                                          :attrs
+                                         merge-with
                                          merge
                                          nattrs))))]
      {:config (fn [nnattrs]
